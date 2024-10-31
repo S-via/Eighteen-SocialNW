@@ -1,6 +1,14 @@
 {
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+
   "dependencies": {
     "mongoose": "^8.7.3",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
   }
 }
