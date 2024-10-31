@@ -24,6 +24,12 @@ const thoughtSchema = new Schema(
         },
         reactions: reactionSchema,
         /// check twice
+        toJSON :
+        {
+            virtual:true,
+        },
+        id:false,
+        // correct convention??
 
     });
 
