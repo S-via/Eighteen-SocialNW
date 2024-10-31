@@ -1,46 +1,64 @@
 // import paths 
+const { Schema, model, Types } = require('mongoose');
 
-/* 
-thoughtText:{
-string
-requiered
-Must be 1-280 characters 
-},
+const thoughtSchema = new Schema(
+    {
+        thoughtText:
+        {
+            type: String,
+            requiered: true,
+            minLength: 1,
+            maxLength: 280
+        },
+        createdAt:
+        {
+            type: Date,
+            default: Date.now,
+            // check twice
 
-createdAt:{
-date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-},
+        },
+        username:
+        {
+            type: String,
+            requiered: true
+        },
+        reactions: reactionSchema,
+        /// check twice
 
-username:{
-string
-required
-},
-
-reactions:{ 
-(reactionSchema)
-}
-*/
+    });
 
 // CREATE A VIRTUAL CALLED reactionCount that retrives the length
 // thought's reactions array field on the query 
+thoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
+})
 
 /* Will be used as the reaction field 
 subdocument schema in the Thoughts
  import  */
 
 const reactionSchema = new Schema({
-    reactionId:{
+    reactionId: {
+        type: Schema.ObjectId,
+        default: () => new Types.ObjectId(),
+        // clarification
+    },
+    reactionBody: {
+        type: String,
+        requiered: true,
+        maxLength:280
 
     },
-    reactionBody:{
-
+    username: {
+        type:String,
+        requiered:true,
     },
-    username:{
-
-    },
-    createdAt:{
-
+    createdAt: {
+        type:Date,
+        default:Date.now,
     }
-}) 
+});
+
+const Thought = model('though',thoughtSchema)
+
+module.exports= Thought;
