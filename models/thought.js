@@ -22,16 +22,18 @@ const thoughtSchema = new Schema(
             type: String,
             requiered: true
         },
-        reactions: reactionSchema,
-        /// check twice
-        toJSON :
+        reactions: [reactionSchema],
+    },
+    {
+        toJSON:
         {
-            virtual:true,
+            virtual: true,
         },
-        id:false,
+        id: false,
         // correct convention??
 
-    });
+    }
+);
 
 // CREATE A VIRTUAL CALLED reactionCount that retrives the length
 // thought's reactions array field on the query 
@@ -52,20 +54,20 @@ const reactionSchema = new Schema({
     reactionBody: {
         type: String,
         requiered: true,
-        maxLength:280
+        maxLength: 280
 
     },
     username: {
-        type:String,
-        requiered:true,
+        type: String,
+        requiered: true,
     },
     createdAt: {
-        type:Date,
-        default:Date.now,
+        type: Date,
+        default: Date.now,
         // getter?
     }
 });
 
-const Thought = model('though',thoughtSchema)
+const Thought = model('though', thoughtSchema)
 
-module.exports= Thought;
+module.exports = Thought;
