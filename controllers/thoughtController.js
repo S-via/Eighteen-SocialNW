@@ -45,7 +45,7 @@ module.exports = {
     },
 
     // PUT update a thought by _id
-    async updateThought(req, res) {
+    async updateThoughtId(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
@@ -64,7 +64,7 @@ module.exports = {
         }
     },
     // DELETE remove thought by _id
-    async removeThought(req, res) {
+    async removeThoughtId(req, res) {
         try {
             const deleteThought = await User.findOneAndDelete(
                 { _id: req.params.thoughtId },
