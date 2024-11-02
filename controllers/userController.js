@@ -1,4 +1,4 @@
-// require models User & Though from models folder
+// require models User from models folder
 const { User} = require('../models')
 
 module.exports = {
