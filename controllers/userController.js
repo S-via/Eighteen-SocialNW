@@ -20,7 +20,7 @@ module.exports = {
             const user = await User.findOne(
                 { _id: req.params.userId }
                     .populate('thoughts')
-                    .populate('users')
+                    .populate('friends')
             )
             if (!user) {
                 return res.status(404).json({ message: 'no user found' })
@@ -41,7 +41,7 @@ module.exports = {
     },
 
     // update user by _id 
-    async updateUser(req, res) {
+    async updateUserId(req, res) {
         try {
             const updateUser = await User.findOneAndUpdate(
                 { _id: req.params.userId },
@@ -61,7 +61,7 @@ module.exports = {
     },
 
     // DELETE user by _id
-    async deleteUser(req, res) {
+    async deleteUserId(req, res) {
         try {
             const deleteUser = await User.findOneAndDelete(
                 { _id: req.params.userId }
@@ -77,13 +77,15 @@ module.exports = {
     },
     //// /api/users/:userId/friends/friendId ////
 
-    // post add new friend to users friend list
+    // POST add new friend to users friend list
     async addNewFriend(req, res) {
         try {
             const newFriend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: req.body } },
-                { runValidators: true }
+                { $addToSet: { friends: req.params.friendsId } },
+                { runValidators: true,
+                    new:true
+                 }
             );
 
             if (!newFriend) {
@@ -98,12 +100,12 @@ module.exports = {
         }
     },
 
-    // delete remove friend from user's friend list 
+    // DELETE remove friend from user's friend list 
     async deleteFriend(req, res) {
         try {
             const deletedFriend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: { friendsId: req.params.friendsId } } },
+                { $pull: { friends:req.params.friendsId } },
                 { runValidators: true, new: true }
             );
             if (!deletedFriend) {
