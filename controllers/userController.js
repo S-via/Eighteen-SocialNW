@@ -60,7 +60,7 @@ module.exports = {
         }
     },
 
-    // delete user by _id
+    // DELETE user by _id
     async deleteUser(req, res) {
         try {
             const deleteUser = await User.findOneAndDelete(
