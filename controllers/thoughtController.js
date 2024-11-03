@@ -24,7 +24,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: 'no thought found by that id' })
             }
-
+            res.json(thought)
         } catch (err) {
             res.status(500).json(err);
         }
@@ -34,8 +34,8 @@ module.exports = {
         try {
             const newThought = await Thought.create(req.body)
             await User.findOneAndUpdate(
-                { _id: req.body.thoughtId },
-                { $push: { thoughts: thought._id } },
+                { _id: req.body.userId },
+                { $push: { thoughts: newThought._id } },
                 { new: true }
             )
             res.json(newThought);
@@ -66,7 +66,7 @@ module.exports = {
     // DELETE remove thought by _id
     async removeThoughtId(req, res) {
         try {
-            const deleteThought = await User.findOneAndDelete(
+            const deleteThought = await Thought.findOneAndDelete(
                 { _id: req.params.thoughtId },
 
                 {
@@ -75,10 +75,10 @@ module.exports = {
                 }
             )
             if (!deleteThought) {
-                res.status(404).json({ message: 'no user found' })
+                return res.status(404).json({ message: 'no user found' })
 
             }
-            res.json(deleteThought);
+            res.json({message:'thought deleted',deleteThought});
         } catch (err) {
             res.status(500).json(err)
         }
@@ -91,7 +91,7 @@ module.exports = {
     async createReaction(req, res) {
         try {
             const newReaction = await Thought.findOneAndUpdate(
-                { _id: params.thoughtId },
+                { _id: req.params.thoughtId },
                 { $push: { reactions: req.body } },
                 {
                     runValidators: true,
