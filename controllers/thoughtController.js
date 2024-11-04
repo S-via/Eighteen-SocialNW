@@ -118,7 +118,7 @@ module.exports = {
                 { new: true }
             );
             if (!deleteReaction) {
-                return res.satus(404).json.status({ message: 'no reaction found' })
+                return res.satus(404).json({ message: 'no reaction found' })
             }
             res.json(deleteReaction);
         } catch (err) {
