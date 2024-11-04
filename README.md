@@ -28,7 +28,7 @@ And a GET request for thoughts using<br>
 localhost:3001/api/thoughts
 ![getusers](/images/getuser.png) <br>
 ![getthoughts](/images/getthoughts.png)
-<a href = "https://youtu.be/T4vKb0kG2jM"> --> LINK HERE </a>
+<a href = "https://youtu.be/T4vKb0kG2jM">--> LINK HERE </a>
 
 ### GET users & thougths by Id 
 The following shows<br>
@@ -60,7 +60,7 @@ localhost:3001/api/users/ (users Id goes here)<br>
 ![postusers](/images/postusers.png)
 ![putusers](/images/putusers.png)
 ![deleteusers](/images/deleteusers.png)
-<a href = "https://youtu.be/_aIzSPi6BCI">--> LINK GOES HERE 
+<a href = "https://youtu.be/_aIzSPi6BCI"> --> LINK GOES HERE </a>
 
 ### POST PUT DELETE FOR THOUGHTS
 The following shows<br>
@@ -77,7 +77,7 @@ localhost:3001/api/thoughts/ (thouhts Id goes here)<br>
 ![postthoughts](/images/postthoughts.png)
 ![puthoughts](/images/putthoughts.png)
 ![deletethoughts](/images/deletethoughts.png)
-<a href = "https://youtu.be/2LBTHNtXjPM">--> LINK GOES HERE 
+<a href = "https://youtu.be/2LBTHNtXjPM"> --> LINK GOES HERE </a>
 
 ### POST & DELETE FOR USERS FRIENDS
 The following shows<br>
@@ -88,7 +88,7 @@ Which after a DELETE request is submitted using the same id in routes<br>
 localhost:3001/api/users/ (users Id goes here)/friends/ (friends Id)<br>
 ![postusersfriends](/images/post-users-friends.png)
 ![deleteusersfriends](/images/delete-users-frinds.png)
-<a href = "https://youtu.be/V6VfhUKuwmI">--> LINK GOES HERE 
+<a href = "https://youtu.be/V6VfhUKuwmI"> --> LINK GOES HERE </a>
 
 ### POST & DELETE THOUGHTS / REACTION
 For a POST request for a reaction using a thoughts Id we create and instant POST using the following route 
